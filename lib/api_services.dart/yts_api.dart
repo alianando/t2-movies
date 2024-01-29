@@ -3,12 +3,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:t2/last_update/last_update_provider.dart';
 
 import '../models/yts.dart';
 import 'package:http/http.dart' as http;
 
 class YtsApi {
-  static Future<YtsData> getMovies() async {
+  static Future<YtsData> getMovies(BuildContext context) async {
     String baseUrl = 'https://yts.mx/api/v2/';
     String listMovies = 'list_movies.json';
     String minRating = 'minimum_rating=4';
@@ -25,6 +27,11 @@ class YtsApi {
       debugPrint('got data successfully');
       return YtsData.fromJson(data);
     }
+    if(context.mounted){
+      final last_update_p = Provider.of<LastUpdateProvider>(context, listen: false);
+      last_update_p.update_last_update_time(DateTime.now());
+    }
+
     debugPrint('error: ${response.statusCode}');
     return YtsData();
   }

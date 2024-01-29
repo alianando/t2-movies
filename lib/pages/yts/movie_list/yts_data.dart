@@ -10,7 +10,7 @@ class ShowYts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<YtsData>(
-      future: YtsApi.getMovies(),
+      future: YtsApi.getMovies(context),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

@@ -4,21 +4,21 @@ class YtsData {
   String? status;
   String? statusMessage;
   Data? data;
-  Meta? meta;
+  // Meta? meta;
 
   YtsData({
     this.status,
     this.statusMessage,
     this.data,
-    this.meta,
+    // this.meta,
   });
 
   YtsData.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     statusMessage = json['status_message'];
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    meta = json['@meta'] != null ? Meta.fromJson(json['@meta']) : null;
-    debugPrint('completed YtsData.fromJson');
+    // meta = json['@meta'] != null ? Meta.fromJson(json['@meta']) : null;
+    // debugPrint('completed YtsData.fromJson');
   }
 
   Map<String, dynamic> toJson() {
@@ -28,9 +28,9 @@ class YtsData {
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    if (meta != null) {
-      data['@meta'] = meta!.toJson();
-    }
+    // if (meta != null) {
+    //   data['@meta'] = meta!.toJson();
+    // }
     return data;
   }
 }
@@ -130,7 +130,7 @@ class Movies {
   });
 
   Movies.fromJson(Map<String, dynamic> json) {
-    print(json['rt_rating']);
+    // print(json['rt_rating']);
     // print(json['rating'].runtimeType);
     id = json['id'];
     url = json['url'];
@@ -275,31 +275,31 @@ class Torrents {
   }
 }
 
-class Meta {
-  int? serverTime;
-  String? serverTimezone;
-  int? apiVersion;
-  String? executionTime;
-
-  Meta(
-      {this.serverTime,
-      this.serverTimezone,
-      this.apiVersion,
-      this.executionTime});
-
-  Meta.fromJson(Map<String, dynamic> json) {
-    serverTime = json['server_time'];
-    serverTimezone = json['server_timezone'];
-    apiVersion = json['api_version'];
-    executionTime = json['execution_time'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['server_time'] = serverTime;
-    data['server_timezone'] = serverTimezone;
-    data['api_version'] = apiVersion;
-    data['execution_time'] = executionTime;
-    return data;
-  }
-}
+// class Meta {
+//   int? serverTime;
+//   String? serverTimezone;
+//   int? apiVersion;
+//   String? executionTime;
+//
+//   Meta(
+//       {this.serverTime,
+//       this.serverTimezone,
+//       this.apiVersion,
+//       this.executionTime});
+//
+//   Meta.fromJson(Map<String, dynamic> json) {
+//     serverTime = json['server_time'];
+//     serverTimezone = json['server_timezone'];
+//     apiVersion = json['api_version'];
+//     executionTime = json['execution_time'];
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = <String, dynamic>{};
+//     data['server_time'] = serverTime;
+//     data['server_timezone'] = serverTimezone;
+//     data['api_version'] = apiVersion;
+//     data['execution_time'] = executionTime;
+//     return data;
+//   }
+// }

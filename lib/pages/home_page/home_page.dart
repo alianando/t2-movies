@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:t2/all_movies/show_all_movies.dart';
+import 'package:t2/last_update/last_update.dart';
 import 'package:t2/pages/yts/movie_list/yts_data.dart';
+
+import '../../featured_movies/featured_movies.dart';
+import '../../fetch_more_movies/fetch_more_movie_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,8 +28,14 @@ class HomePage extends StatelessWidget {
         shrinkWrap: true,
         physics: const ScrollPhysics(),
         children: const [
-          _SavedMoviesButton(),
-          ShowYts(),
+          LastUpdate(),
+          FeaturedMovies(),
+
+          // MoviesOfSpecificDate(index: 0),
+          ShowAllMovies(),
+          FetchMoreMovieButton(),
+          // _SavedMoviesButton(),
+          // ShowYts(),
         ],
       ),
     );

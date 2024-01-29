@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:t2/models/yts.dart';
+import 'package:t2/movie_details/movie_details_page.dart';
 
 import '../api_services.dart/yts_api.dart';
 import '../pages/yts/movie_details/movie_details.dart';
@@ -15,24 +16,26 @@ class WidgetMovieItemSmall extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return YtsMovieDetails(
-            movie: movie,
-          );
+          // return YtsMovieDetails(
+          //   movie: movie,
+          // );
+          return MovieDetailsPage(movie: movie);
         }));
       },
-      child: Card(
-        child: Stack(children: [
-          ShowImage(
-            url: movie.largeCoverImage!,
-          ),
-          Positioned(
-            bottom: 0.5,
-            left: 5,
-            right: 0,
-            child: Text('${movie.rating!} / 10'),
-          ),
-        ]),
-      ),
+      child: Card(child: ShowImage(url: movie.largeCoverImage!)),
+      // child: Card(
+      //   child: Stack(children: [
+      //     ShowImage(
+      //       url: movie.largeCoverImage!,
+      //     ),
+      //     Positioned(
+      //       bottom: 0.5,
+      //       left: 5,
+      //       right: 0,
+      //       child: Text('${movie.dateUploaded}'),
+      //     ),
+      //   ]),
+      // ),
     );
   }
 }
