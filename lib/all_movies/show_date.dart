@@ -14,19 +14,23 @@ class ShowDate extends StatelessWidget {
     );
   }
 
-  String getDuration(){
+  String getDuration() {
+    if (date == null || date == 'null') {
+      return 'Unspecified';
+    }
     final DateTime todayDt = DateTime.now();
     final DateTime today = DateTime(todayDt.year, todayDt.month, todayDt.day);
     final DateTime movieDt = DateTime.parse(date);
     final int duration = today.difference(movieDt).inDays;
     debugPrint('$movieDt , $duration, $today');
-    if(duration == 0){
+
+    if (duration == 0) {
       return 'Today';
     }
-    if(duration == 1){
+    if (duration == 1) {
       return 'Yesterday';
     }
-    if(duration == 2){
+    if (duration == 2) {
       return 'Two days ago';
     }
     return '$duration days ago';
